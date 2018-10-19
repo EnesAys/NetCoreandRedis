@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisExample", "RedisExample\RedisExample.csproj", "{1631444F-C816-4C7F-983A-F185AE44227B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{F140CB60-62A3-4A51-AC06-2849D1157CE4}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Asus\Desktop\getSetRedis.JPG = C:\Users\Asus\Desktop\getSetRedis.JPG
+		C:\Users\Asus\Desktop\redis-server.JPG = C:\Users\Asus\Desktop\redis-server.JPG
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
