@@ -31,11 +31,11 @@ namespace RedisExample
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDistributedRedisCache(options =>
-            {
-                options.InstanceName = "RedisNetCoreSample";
-                options.Configuration = "localhost:6379"; //Your Redis Connection
-            });
+                services.AddDistributedRedisCache(options =>
+                {
+                    options.InstanceName = "RedisNetCoreSample";
+                    options.Configuration = "localhost:6379"; //Your Redis Connection
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

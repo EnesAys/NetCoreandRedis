@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using RedisExample.Models;
 
 namespace RedisExample.Controllers
@@ -34,11 +35,9 @@ namespace RedisExample.Controllers
                 Name = "Aysan",
                 Surname = "Aysan"
             };
-
             playerlist.Add(player1);
             playerlist.Add(player2);
             playerlist.Add(player3);
-
         }
 
         public List<Player> GetNames()
@@ -46,13 +45,11 @@ namespace RedisExample.Controllers
             return playerlist;
         }
 
-        [ResponseCache(Duration = 60)]
         public Player GetNameByID(int id)
         {
             var player = playerlist.FirstOrDefault(x=>x.ID==id);
             return player;
         }
-
         public IActionResult Index()
         {
             var items = GetNames();
@@ -65,15 +62,14 @@ namespace RedisExample.Controllers
             if (value.Result == null)
             {
                 var player = GetNameByID(id);
-                cache.SetStringAsync(id.ToString(), "Cache eklendi " + player.Name +" "+  player.Surname);
-                //if you want sent object to redis you can use Newtonsoft.json libtary
-                //JsonConvert.SerializeObject(object)
+                cache.SetStringAsync(id.ToString(), JsonConvert.SerializeObject(player));        
                 return View(player);
             }
             else
             {
-                //var newcache = cache.GetStringAsync(Convert.ToString(id));
-                return Content(value.Result.ToString());
+                var CachePlayer = JsonConvert.DeserializeObject<Player>(value.Result);
+                CachePlayer.Name = "CACHE " + CachePlayer.Name;
+                return View(CachePlayer);
             }
         }
 
