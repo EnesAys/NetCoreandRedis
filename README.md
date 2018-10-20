@@ -32,3 +32,5 @@ Add your Redis configuration in startup.cs ConfigureServlces
 Add your nuget packages Microsoft.Extensions.Caching.Redis
 
 You are ready!
+
+Check post about this sample http://enesaysan.com/software/netcore-2-1-ve-redis/
